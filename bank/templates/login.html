@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+li{
+align:center;
+}
+      a{
+      text-decoration:none;
+      }
+
+    body{
+    background-color:lightgrey;
+    }
+      h1{
+      color: maroon;
+      }
+      h2{
+      font-size: xx-large;
+      }
+    </style>
+</head>
+<body><center>
+    <div>
+<h1 >UIUIU BANK</h1>
+</div>
+    <div>
+<nav>
+  <fieldset>
+    <h3> <a href="{% url 'home' %}">Home</a>  &emsp; &emsp; &emsp; &emsp; &emsp;
+    <a href="{% url 'about' %}">About Us</a> &emsp; &emsp; &emsp; &emsp; &emsp;
+    <a href="{% url 'contact' %}">Contact Us</a> &emsp; &emsp; &emsp; &emsp; &emsp;
+     <a href="{% url 'register' %}">Register</a> &emsp; &emsp; &emsp; &emsp; &emsp;
+    <a href="{% url 'login' %}">Login</a> &emsp; &emsp; &emsp;</h3>
+    </fieldset>
+</nav>
+        </div>
+    <br>
+    <div>
+        <h2> User Login</h2>
+    <h3 style="color:red;">{{ error }}</h3>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <table cellspacing="8" cellpadding="2">
+            <tr>
+                <th>Username</th>
+                <th>:</th>
+                <td><input type="text" name="uname" required></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <th>:</th>
+                <td><input type="password" name="pwd" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><input type="submit" value="Login"></td>
+            </tr>
+
+        </table>
+    </form>
+
+
+</div>
+    </center>
+
+</body>
+</html>

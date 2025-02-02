@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini-Statement</title>
+    <style>
+li{
+align:center;
+}
+      a{
+      text-decoration:none;
+      }
+
+    body{
+    background-color:lightgrey;
+    }
+      h1{
+      color: maroon;
+      }
+      h2{
+      font-size: xx-large;
+      }
+    </style>
+</head>
+<body><center><div>
+<h1 >UIUIU BANK</h1>
+</div>
+  <div>
+<nav>
+  <fieldset>
+    <h3> <a href="{% url 'withdraw' %}">Withdraw</a>  &emsp; &emsp; &emsp; &emsp;
+      <a href="{% url 'deposit' %}">Deposit</a> &emsp; &emsp; &emsp; &emsp;
+          <a href="{% url 'loan' %}">Loan</a> &emsp; &emsp; &emsp; &emsp;
+          <a href="{% url 'loaninfo' %}">Loans Info</a> &emsp; &emsp; &emsp; &emsp;
+              <a href="{% url 'custloan' %}">Customer Loans</a> &emsp; &emsp; &emsp; &emsp;
+
+    <a href="{% url 'mini' %}">MiniStatement</a> &emsp; &emsp; &emsp; &emsp;
+      <a style="align:left;" href="{% url 'home'%}">LogOut</a>
+    </h3>
+    </fieldset>
+  </nav>
+    </div>
+  <div>
+
+  <h2 style="padding:1%;">Mini-Statement</h2>
+  <form method="post" action="">
+    {% csrf_token %}
+    <table cellspacing="8" cellpadding="2">
+      <tr>
+        <th>Customer ID</th>
+        <th>:</th>
+        <td><input type="text" name="cid" value="{{ payments.customer_id}}" required></td>
+      </tr>
+
+      <tr>
+        <th></th>
+        <th></th>
+        <td><input type="submit" value="Get Mini-Statement"></td>
+      </tr>
+    </table>
+  </form>
+    <h2 style="color:red;">{{ error }}</h2>
+ {% if payments %}
+                <table border="1" cellpadding="10" cellspacing="0">
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Transaction Date</th>
+                        <th>Transaction Type</th>
+                        <th>Amount</th>
+                    </tr>
+                    {% for i in payments %}
+                        <tr>
+                            <td>{{ i.customer_id }}</td>
+                            <td>{{ i.transaction_date }}</td>
+                            <td>{{ i.transaction_type }}</td>
+                            <td>{{ i.amount }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+</div>
+    </center>
+
+</body>
+</html>

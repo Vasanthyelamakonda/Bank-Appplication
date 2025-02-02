@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loans Information</title>
+    <style>
+li{
+align:center;
+}
+      a{
+      text-decoration:none;
+      }
+
+    body{
+    background-color:lightgrey;
+    }
+      h1{
+      color: maroon;
+      }
+      h2{
+      font-size: xx-large;
+      }
+    </style>
+</head>
+<body><center>
+    <div>
+<h1 >UIUIU BANK</h1>
+</div>
+    <div>
+<nav>
+  <fieldset>
+    <h3> <a href="{% url 'withdraw' %}">Withdraw</a>  &emsp; &emsp; &emsp; &emsp;
+      <a href="{% url 'deposit' %}">Deposit</a> &emsp; &emsp; &emsp; &emsp;
+        <a href="{% url 'loan' %}">Loan</a> &emsp; &emsp; &emsp; &emsp;
+        <a href="{% url 'loaninfo' %}">Loans Info</a> &emsp; &emsp; &emsp; &emsp;
+              <a href="{% url 'custloan' %}">Customer Loans</a> &emsp; &emsp; &emsp; &emsp;
+
+    <a href="{% url 'mini' %}">MiniStatement</a> &emsp; &emsp; &emsp; &emsp;
+      <a style="align:left;" href="{% url 'home'%}">LogOut</a>
+    </h3>
+    </fieldset>
+  </nav>
+        </div>
+    <div>
+
+  <h2>Loans Info</h2>
+        </div>
+    <h2 style="color:blue;">{{ msg }}</h2>
+    <div>
+        <form method="post" action="">
+            {% csrf_token %}
+            <table cellspacing="8" cellpadding="2">
+                <tr>
+                    <th>Customer ID</th>
+                    <th>:</th>
+                    <td>
+                            <select name="cid" required>
+                                <option disabled selected>Select Customer ID</option>
+                                {% for j in customer_ids %}
+                                    <option value="{{ j }}">{{ j }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                </tr>
+                <tr>
+                    <th>Loan ID</th>
+                    <th>:</th>
+                    <td>
+                            <select name="lid" required>
+                                <option  disabled selected>Select Loan ID</option>
+                                {% for i in loan_ids %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                </tr>
+
+                 <tr>
+                    <th>Amount</th>
+                    <th>:</th>
+                    <td><input type="text" name="amt" required></td>
+                </tr>
+                 <tr>
+                    <th>Time Period</th>
+                    <th></th>
+                    <td><input type="text" name="time" required></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <td><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    </center>
+
+</body>
+</html>

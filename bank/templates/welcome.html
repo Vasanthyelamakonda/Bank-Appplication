@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <style>
+li{
+align:center;
+}
+      a{
+      text-decoration:none;
+      }
+
+    body{
+    background-color:lightgrey;
+    }
+      h1{
+      color: maroon;
+      }
+      h2{
+      font-size: xx-large;
+      }
+    </style>
+</head>
+<body><center>
+    <div>
+<h1 >UIUIU BANK</h1>
+</div>
+    <div>
+<nav>
+  <fieldset>
+    <h3> <a href="{% url 'withdraw' %}">Withdraw</a>  &emsp; &emsp; &emsp; &emsp;
+      <a href="{% url 'deposit' %}">Deposit</a> &emsp; &emsp; &emsp; &emsp;
+          <a href="{% url 'loan' %}">Loan</a> &emsp; &emsp; &emsp; &emsp;
+          <a href="{% url 'loaninfo' %}">Loans Info</a> &emsp; &emsp; &emsp; &emsp;
+              <a href="{% url 'custloan' %}">Customer Loans</a> &emsp; &emsp; &emsp; &emsp;
+
+    <a href="{% url 'mini' %}">MiniStatement</a> &emsp; &emsp; &emsp; &emsp;
+      <a style="align:left;" href="{% url 'home'%}">LogOut</a>
+    </h3>
+    </fieldset>
+  </nav>
+        </div>
+    <div>
+
+  <h2 style="padding:10%;">Welcome To UIUIU Bank</h2>
+        </div>
+    </center>
+
+</body>
+</html>

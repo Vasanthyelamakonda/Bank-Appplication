@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>customer Loans</title>
+    <style>
+li{
+align:center;
+}
+      a{
+      text-decoration:none;
+      }
+
+    body{
+    background-color:lightgrey;
+    }
+      h1{
+      color: maroon;
+      }
+      h2{
+      font-size: xx-large;
+      }
+    </style>
+</head>
+<body><center><div>
+<h1 >UIUIU BANK</h1>
+</div>
+  <div>
+<nav>
+  <fieldset>
+    <h3> <a href="{% url 'withdraw' %}">Withdraw</a>  &emsp; &emsp; &emsp; &emsp;
+      <a href="{% url 'deposit' %}">Deposit</a> &emsp; &emsp; &emsp; &emsp;
+          <a href="{% url 'loan' %}">Loan</a> &emsp; &emsp; &emsp; &emsp;
+          <a href="{% url 'loaninfo' %}">Loans Info</a> &emsp; &emsp; &emsp; &emsp;
+      <a href="{% url 'custloan' %}">Customer Loans</a> &emsp; &emsp; &emsp; &emsp;
+    <a href="{% url 'mini' %}">MiniStatement</a> &emsp; &emsp; &emsp; &emsp;
+      <a style="align:left;" href="{% url 'home'%}">LogOut</a>
+    </h3>
+    </fieldset>
+  </nav>
+    </div>
+  <div>
+
+  <h2 style="padding:1%;">Customer Loan Details</h2>
+  <form method="post" action="">
+    {% csrf_token %}
+    <table cellspacing="8" cellpadding="2">
+      <tr>
+        <th>Customer ID</th>
+        <th>:</th>
+        <td><select name="cid" required>
+                                <option disabled selected>Select Customer ID</option>
+                                {% for j in customer_ids %}
+                                    <option value="{{ j }}">{{ j }}</option>
+                                {% endfor %}
+                            </select></td>
+      </tr>
+
+      <tr>
+        <th></th>
+        <th></th>
+        <td><input type="submit" value="Search"></td>
+      </tr>
+    </table>
+  </form>
+    <h2 style="color:red;">{{ error }}</h2>
+{% if loans %}
+                <table border="1" cellpadding="10" cellspacing="0">
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Loan ID</th>
+                        <th>Amount</th>
+                        <th>Time Period</th>
+                    </tr>
+{% for i in loans %}
+                        <tr>
+                            <td>{{ i.customer_id }}</td>
+                            <td>{{ i.loan_id }}</td>
+                            <td>{{ i.amount }}</td>
+                            <td>{{ i.time_period }}</td>
+                        </tr>
+{% endfor %}
+                </table>
+{% endif %}
+</div>
+    </center>
+
+</body>
+</html>
